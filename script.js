@@ -45,9 +45,11 @@ const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
 // Get quotes from API
 async function getQuotes() {
     loading();
+    //create proxy server to complete api call to apiUrl
+    const proxyUrl = 'https://blooming-beyond-22573.herokuapp.com/';
     const apiUrl = 'https://type.fit/api/quotes';
     try {
-      const response = await fetch(apiUrl); // get JSON from api
+      const response = await fetch(proxyUrl + apiUrl); // get JSON from api
       apiQuotes = await response.json(); // turn JSON into an object and pass into variable
       newQuote();
     } catch (error) {
